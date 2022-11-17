@@ -1,8 +1,10 @@
 import './App.css';
 import axios from "axios";
 import React from "react"
-//import { Routes, Route } from 'react-router-dom';
-//import BreedList from './components/BreedList';
+import { Routes, Route ,Link } from "react-router-dom";
+import BreedList from './components/BreedList';
+
+
 
 
 const Url = "https://dog.ceo/api/breeds/list/all"
@@ -21,21 +23,31 @@ function App() {
 
     });
   },  []);
+
   
    
 
   if (!post) return null;
- const props = Object.keys(post.message)
-    console.log(props)
+ const breeds = Object.keys(post.message)
     console.log(post.message)
 
 
+   
+
   return (
     <div className="Component">
+   <nav>
+   <Link to='/components/BreedList' ><h1 className="clickPerson"> BreedList </h1></Link>
 
+   </nav>
       <main>
    
-      <p className='breeds'>{props + " " }</p>
+   
+
+      <Routes>
+        <Route  path='/components/BreedList' element={<BreedList post={breeds}  />} />
+        
+        </Routes>
 
       </main>
 

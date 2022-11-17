@@ -1,12 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
 import axios from "axios";
 import React from "react"
-import { Routes, Route } from 'react-router-dom';
-import BreedList from './components/BreedList';
+//import { Routes, Route } from 'react-router-dom';
+//import BreedList from './components/BreedList';
 
 
-const Url = "https://dog.ceo/api/breeds/image/random"
+const Url = "https://dog.ceo/api/breeds/list/all"
 
 function App() {
 
@@ -21,10 +20,14 @@ function App() {
      setPost(response.data);
 
     });
-  }, []);
+  },  []);
   
-  
+   
+
   if (!post) return null;
+ const props = Object.keys(post.message)
+    console.log(props)
+    console.log(post.message)
 
 
   return (
@@ -32,9 +35,8 @@ function App() {
 
       <main>
    
-      <p><img src= {post.message }></img></p>
+      <p className='breeds'>{props + " " }</p>
 
-      <button handleClick={BreedList}> ButtonList</button>
       </main>
 
 
